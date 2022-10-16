@@ -1,0 +1,60 @@
+<form [formGroup]="atividadeForm" (submit)="onSubmit()">
+    <div class="modal-header">
+        <h4 class="modal-title">{{title}}</h4>
+        <button type="button" class="btn btn-close" aria-label="Close" (click)="activeModal.close()">
+
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row g-3 mb-3">
+            <div class="col-md-8">
+                <label for="tipo-atividade" class="form-label">Tipo de Atividade</label>
+                <select class="form-select" id="tipo-atividade" formControlName="tipoDeAtividade"
+                    [ngClass]="{'is-invalid': isInvalidField('tipoDeAtividade'), 'is-valid': isValidField('tipoDeAtividade')}">
+                    <option disabled value="">-- Selecione um Tipo de Atividade --</option>
+                    <option *ngFor="let ta of tiposDeAtividade" [ngValue]="ta">{{ta.nome}}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="getErrorField('tipoDeAtividade', 'required')">
+                    É necessário informar o Tipo de Atividade
+                </div>
+            </div>
+            <div [class]="{'col-md-4': !atividade, 'col-md-2': !!atividade }">
+                <label for="horas" class="form-label">Horas</label>
+                <input type="number" class="form-control" id="horas" formControlName="horasTotais"
+                    [ngClass]="{'is-invalid': isInvalidField('horasTotais'), 'is-valid': isValidField('horasTotais')}">
+                <div class="invalid-feedback" *ngIf="getErrorField('horasTotais', 'required')">
+                    É necessário informar o total de horas
+                </div>
+                <div class="invalid-feedback" *ngIf="getErrorField('horasTotais', 'min')">
+                    Horas deve ser maior que 0 (zero)
+                </div>
+            </div>
+            <div class="col-md-2" *ngIf="atividade">
+                <label for="horas" class="form-label">Horas Validas</label>
+                <input type="number" class="form-control" id="horasValidas" formControlName="horasValidas"
+                    [ngClass]="{'is-invalid': isInvalidField('horasValidas'), 'is-valid': isValidField('horasValidas')}">
+                <div class="invalid-feedback" *ngIf="getErrorField('horasValidas', 'required')">
+                    É necessário informar o total de horas
+                </div>
+                <div class="invalid-feedback" *ngIf="getErrorField('horasValidas', 'min')">
+                    Horas deve ser maior que 0 (zero)
+                </div>
+            </div>
+        </div>
+        <div class="mb-3" *ngIf="!atividade">
+            <label for="documento" class="form-label">Certificado para validação</label>
+            <input type="file" class="form-control" id="documento" (change)="onChangeFile($event)"
+                (click)="touchedField('file')"
+                [ngClass]="{'is-invalid': isInvalidField('file'), 'is-valid': isValidField('file')}">
+            <div class="invalid-feedback" *ngIf="getErrorField('file', 'required')">
+                É necessário anexar um Certificado
+            </div>
+        </div>
+        <div class="form-group" *ngIf="atividade">
+            <a [href]="atividade.urlDocumento" target="_blank">Certificado</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Adicionar</button>
+    </div>
+</form>

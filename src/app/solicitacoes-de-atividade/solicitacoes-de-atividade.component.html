@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary d-flex" routerLink="new" *ngIf="usuario?.tipo === 'ALUNO'">
+            <span class="material-icons me-1">summarize</span>              
+            Criar Solicitação
+        </button>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Situação</th>
+                        <th scope="col" *ngIf="usuario?.tipo === 'COORDENADOR'">Aluno</th>
+                        <th scope="col">Data de Solicitação</th>
+                        <th width="60px" *ngIf="usuario?.tipo === 'COORDENADOR'">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of solicitacoes" >
+                        <th scope="row">{{s.id}}</th>
+                        <td scope="row">{{s.situacao}}</td>
+                        <td scope="row" *ngIf="usuario?.tipo === 'COORDENADOR'">{{s.nomeAluno}}</td>
+                        <td scope="row">{{s.datahoraSolicitacao}}</td>
+                        <th *ngIf="usuario?.tipo === 'COORDENADOR'">
+                            <a class="btn btn-primary btn-sm d-inline-flex p-1" 
+                            title="Iniciar Resgistro de Atividades"
+                            [routerLink]="['/solicitacoes-de-atividade', s.id]">
+                                <span class="material-icons">edit_note</span>
+                            </a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

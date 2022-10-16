@@ -1,0 +1,6 @@
+<div class="toast-container position-fixed p-3" style="right: 0;">
+  <ngb-toast *ngFor="let t of toasts" [header]="t.title" [class]="t.classname" [autohide]="true"
+    [delay]="t.delay || 5000" (hidden)="remove(t)">
+    {{t.body}}
+  </ngb-toast>
+</div>

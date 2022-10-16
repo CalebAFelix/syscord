@@ -1,0 +1,78 @@
+#logo {
+    height: 45px;
+}
+
+main {
+    display: flex;
+}
+
+.navbar {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.aplication-name {
+    margin: 0
+}
+
+.user-img {
+    height: 32px;
+}
+
+#btn-user::after {
+    display: none;
+}
+
+.menu {
+    transition: 50ms;
+    width: 88px;
+    padding: 15px;
+    min-height: calc(100vh - 57px);
+    border-right: 1px solid #dee2e6;
+
+    nav {
+        a {
+            span.text {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: 960px) {
+        display: none;
+    }
+
+    &.expand {
+        width: auto;
+        max-width: 350px;
+
+        nav {
+            a {
+                span.text {
+                    display: inline;
+                    margin-left: 7px;
+                }
+            }
+        }
+        @media (max-width: 960px) {
+            display: block;
+            position: absolute;
+            background-color: #fff;
+        }
+    }
+}
+
+
+
+.page {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.page {
+    flex: 1;
+}
+
+.nav>.nav-link {
+    font-weight: bold;
+}

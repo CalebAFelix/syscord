@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary d-flex" routerLink="new">
+            <span class="material-icons me-1">summarize</span>              
+            Criar Tipo de Atividade
+        </button>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Cód.</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Qtd. Máx.</th>
+                        <th scope="col">Horas</th>
+                        <th width="92px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let t of tiposDeAtividade" >
+                        <th scope="row">{{t.id}}</th>
+                        <td scope="row">{{t.nome}}</td>
+                        <td scope="row">{{t.regraDeAtividade?.qtdMaxAtividades}}</td>
+                        <td scope="row">{{t.regraDeAtividade?.horasPorAtividade}}</td>
+                        <th>
+                            <a class="btn btn-warning btn-sm d-inline-flex p-1 me-2"
+                            title="Atualizar tipo de atividade"
+                            [routerLink]="['/tipos-de-atividade', t.id]">
+                                <span class="material-icons md-18">edit</span>                                    
+                            </a>
+                            <a class="btn btn-danger btn-sm d-inline-flex p-1"
+                            title="Deletar tipo de atividade">
+                                <span class="material-icons md-18">delete</span>                                    
+                            </a>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

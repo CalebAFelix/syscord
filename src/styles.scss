@@ -1,0 +1,41 @@
+$primary: #28581c;
+
+$nav-link-color: #28581c;
+$nav-link-hover-color: #204616;
+$nav-pills-link-active-bg: #28581c;
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+
+.title-page {
+  margin-bottom: 60px;
+}
+
+.modal-content {
+  border-radius: 0.6rem;
+}
+
+.toast-header {
+  gap: 10px !important;
+}
+
+.btn {
+  outline: none !important;
+}
+
+.toast {
+  border: none;
+  border-radius: 0.40rem !important;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.material-icons.md-12 { font-size: 12px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.modal-header .btn-close {
+  margin-right: 8px;
+}

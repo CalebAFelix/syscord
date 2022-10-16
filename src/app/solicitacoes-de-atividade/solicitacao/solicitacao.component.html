@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Tipo de Atividade</th>
+                        <th scope="col">Horas</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" *ngIf="usuario?.tipo === 'ALUNO'">Documento</th>
+                        <th width="60px" *ngIf="usuario?.tipo === 'COORDENADOR'">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of atividades" >
+                        <td>{{a.tipoDeAtividade.nome}}</td>
+                        <td>{{a.horasTotais}}</td>
+                        <th>{{a.situacao}}</th>
+                        <td *ngIf="usuario?.tipo === 'ALUNO'">{{a.fileName}}</td>
+                        <td title="Analisar Atividade" *ngIf="usuario?.tipo === 'COORDENADOR'">
+                            <a class="btn btn-primary btn-sm d-inline-flex p-1" (click)="validarAtividade(a.id)">
+                                <span class="material-icons">query_stats</span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row" *ngIf="usuario?.tipo === 'ALUNO'">
+            <div class="col-12 d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-primary d-inline-flex" (click)="openModalAtividade()">
+                    <span class="material-icons me-1">playlist_add</span>
+                    Adicionar
+                </button>
+                <button type="button" class="btn btn-primary d-inline-flex" (click)="createSolicitacao()">
+                    <span class="material-icons me-1">playlist_add_check</span>
+                    Solicitar Registro
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="usuario?.tipo === 'COORDENADOR'">
+            <div class="col-md-12 d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" (click)="registrarSolicitacao()">
+                    <i class="fa-solid fa-file-circle-plus"></i>
+                    Registrar Solicitação
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

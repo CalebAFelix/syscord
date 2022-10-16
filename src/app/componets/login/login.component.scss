@@ -1,0 +1,12 @@
+.login-content {
+    height: calc(100vh - 30px);
+    display: flex;
+}
+
+.form-login {
+    margin: auto auto;
+    width: 500px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 25px;
+    border-radius: 10px;
+}

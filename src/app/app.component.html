@@ -1,0 +1,46 @@
+<nav *ngIf="usuario" class="navbar navbar-dark bg-primary">
+  <button class="btn" type="button" aria-label="Menu Principal" (click)="menuToggle()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <h4 class="aplication-name text-white">SysCord</h4>
+  <div ngbDropdown class="profile-area">
+    <span class="text-white d-none d-sm-inline">{{usuario.nome}}</span>
+    <button ngbDropdownToggle id="btn-user" class="btn p-0 mx-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="/assets/user-image.jpg" class="user-img rounded-circle" alt="Avatar de {{usuario.nome}}">
+    </button>
+    <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="btn-user">
+      <button ngbDropdownItem class="dropdown-item">Ação</button>
+      <div class="dropdown-divider"></div>
+      <button ngbDropdownItem class="dropdown-item d-flex" (click)="sair()">
+        <span class="material-icons"> logout </span>
+        Sair
+      </button>
+    </div>
+  </div>
+</nav>
+<app-toasts></app-toasts>
+<main>
+  <aside class="menu" [class.expand]="expandMenu" *ngIf="usuario">
+    <nav class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link d-flex" routerLinkActive="active" routerLink="/solicitacoes-de-atividade">
+        <span class="material-icons">list_alt</span>
+        <span class="text">Atividades Complementares</span>
+      </a>
+      <a class="nav-link d-flex" routerLinkActive="active" routerLink="/tipos-de-atividade">
+        <span class="material-icons">checklist_rtl</span>
+        <span class="text">Tipos de Atividade</span>
+      </a>
+      <a class="nav-link d-flex" routerLinkActive="active" routerLink="/reposicoes-de-aula">
+        <span class="material-icons">autorenew</span>          
+        <span class="text">Reposições de Aulas</span>
+      </a>
+      <a class="nav-link d-flex disabled">
+        <span class="material-icons">schedule</span>
+        <span class="text">Horários</span>
+      </a>
+    </nav>
+  </aside>
+  <article class="page container-fluid">
+    <router-outlet></router-outlet>
+  </article>
+</main>
